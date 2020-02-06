@@ -3,6 +3,7 @@
 
 import requests
 import json
+from flask import Flask
 
 url = "http://zko.hopto.org:55058/"
 
@@ -21,11 +22,12 @@ def joke_builder():
     return joke_opener, joke_punchline
 
 
-def main():
+app = Flask(__name__)
+@app.route("/")
+def joke():
     joke_opener, joke_punchline = joke_builder()
-    print(joke_opener)
-    print(joke_punchline)
+    return  '{} {} {}'.format(joke_opener, '\n', joke_punchline)
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
