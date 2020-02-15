@@ -8,9 +8,10 @@ metadata:
   annotations:
     metallb.universe.tf/address-pool: microk8s_pool
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - nodePort: 32101
+      name: http
       port: 80 
       targetPort: 80
   selector:
@@ -83,6 +84,7 @@ spec:
   type: NodePort
   ports:
     - nodePort: 30673
+      name: http
       port: 5000 
       targetPort: 5000
   selector:
