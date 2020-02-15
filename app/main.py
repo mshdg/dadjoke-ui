@@ -3,9 +3,10 @@
 
 import requests
 import json
-from flask import Flask
+import os
+from flask import Flask, send_from_directory, render_template
 
-url = "http://zko.hopto.org:55058/"
+url = "http://dad-jokes.application.svc.cluster.local/"
 
 
 def get_data(url):
@@ -26,7 +27,13 @@ app = Flask(__name__)
 @app.route("/")
 def joke():
     joke_opener, joke_punchline = joke_builder()
-    return  '{} {} {}'.format(joke_opener, '\n', joke_punchline)
+    return render_template('index.html', joke=joke_opener, punchline=joke_punchline)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
 if __name__ == "__main__":

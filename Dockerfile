@@ -7,5 +7,7 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 COPY ./app/main.py ./
+COPY static ./static
+COPY templates ./templates
 
 CMD ["python", "-u", "main.py"]
