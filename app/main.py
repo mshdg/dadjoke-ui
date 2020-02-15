@@ -10,17 +10,23 @@ url = "http://dad-jokes.application.svc.cluster.local/"
 
 
 def get_data(url):
-    r = requests.get(url)
-    json_data = json.loads(r.text)
-    return json_data
+    try:
+        r = requests.get(url)
+        json_data = json.loads(r.text)
+        return json_data
+    except Exception as e:
+        print(e)
 
 
 def joke_builder():
-    json_data = get_data(url)
-    joke = (json_data["Joke"])
-    joke_opener = (joke["Opener"])
-    joke_punchline = (joke["Punchline"])
-    return joke_opener, joke_punchline
+    try:
+        json_data = get_data(url)
+        joke = (json_data["Joke"])
+        joke_opener = (joke["Opener"])
+        joke_punchline = (joke["Punchline"])
+        return joke_opener, joke_punchline
+    except Exception as e:
+        print(e)
 
 
 app = Flask(__name__)
