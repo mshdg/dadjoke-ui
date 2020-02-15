@@ -43,7 +43,7 @@ def favicon():
 
 
 @app.route('/health')
-def favicon():
+def health():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'health.html')
 
 
