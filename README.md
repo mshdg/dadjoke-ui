@@ -1,6 +1,6 @@
 # Dad Jokes Web UI #
 
-A simple Python 3 Flask based web UI for the [Dad Jokes microservice](https://github.com/yesinteractive/dad-jokes_microservicei) project. The project is built around the idea of deployment hosted on Docker, and Kubernetes.
+A simple Python 3 Flask based web UI for the [Dad Jokes microservice](https://github.com/yesinteractive/dad-jokes_microservice) project. The project is built around the idea of deployment hosted on Docker, and Kubernetes.
 
 ## Getting Started ##
 
@@ -23,9 +23,9 @@ The Kubernetes example deployes two services, and two deployments.
 #### Installation on Kubernetes ####
 
 Installation can be performed by running the following command.
-    ```sh
-    kubectl apply -f examples/kubernetes/dadjokes.yaml
-    ```
+```bash
+kubectl apply -f examples/kubernetes/dadjokes.yaml
+```
 
 ### Docker ###
 
