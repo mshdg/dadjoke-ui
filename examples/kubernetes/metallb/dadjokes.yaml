@@ -6,10 +6,9 @@ metadata:
   labels:
     app: dad-jokes
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
-    - nodePort: 32101
-      name: http
+    - name: http
       port: 80 
       targetPort: 80
   selector:
@@ -70,6 +69,14 @@ spec:
         ports:
         - containerPort: 5000
           name: http
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
 ---
 apiVersion: v1
 kind: Service
@@ -78,12 +85,13 @@ metadata:
   namespace: dadjokes
   labels:
     app: dad-jokes-ui
+  annotations:
+    metallb.universe.tf/address-pool: #Replace this comment with the L2 pool name
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - nodePort: 30673
-      name: http
-      port: 5000 
-      targetPort: 5000
+  - port: 5000
+    name: http
+    targetPort: 5000
   selector:
     app: dad-jokes-ui
