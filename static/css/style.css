@@ -6,3 +6,9 @@ body {
     line-height: 1.6em;
     margin: auto;
 }
+
+img {
+    display: block;
+    height: 100px;
+    width: auto;
+}
