@@ -6,7 +6,7 @@ import json
 import os
 from flask import Flask, send_from_directory, render_template
 
-url = "http://dad-jokes.application.svc.cluster.local/"
+url = "http://dad-jokes.dadjokes.svc.cluster.local/"
 
 
 def get_data(url):
