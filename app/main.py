@@ -14,7 +14,7 @@ from flask import Flask, send_from_directory, render_template
 URL = "http://dad-jokes.dadjokes.svc.cluster.local/"
 
 
-def get_data(url):
+def get_data(URL):
     """
     This function queries the specified URL to retrieve the json out put.
     """
