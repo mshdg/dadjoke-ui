@@ -7,14 +7,14 @@ and returns it to the end user in a web viewable format.
 """
 
 import os
-import requests
 import json
+import requests
 from flask import Flask, send_from_directory, render_template
 
 URL = "http://dad-jokes.dadjokes.svc.cluster.local/"
 
 
-def get_data(URL):
+def get_data(url):
     """
     This function queries the specified URL to retrieve the json out put.
     """
@@ -22,8 +22,8 @@ def get_data(URL):
         r_values = requests.get(URL)
         json_data = json.loads(r_values.text)
         return json_data
-    except Exception as e_output:
-        print(e_output)
+    except ValueError:
+        print('Decoding JSON has failed')
 
 
 def joke_builder():
@@ -36,8 +36,14 @@ def joke_builder():
         joke_opener = (joke["Opener"])
         joke_punchline = (joke["Punchline"])
         return joke_opener, joke_punchline
-    except Exception as e_output:
-        print(e_output)
+    except ValueError:
+        print('Decoding JSON has failed')
+    except requests.exceptions.Timeout:
+        print(["connection to ", URL, "timed out."])
+    except requests.exceptions.TooManyRedirects:
+        print(["Too many redirects."])
+    except requests.exceptions.RequestException as requests_e:
+        print(requests_e)
 
 
 APP = Flask(__name__)
