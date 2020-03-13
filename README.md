@@ -1,5 +1,7 @@
 # Dad Jokes Web UI #
 
+[![Build Status](https://travis-ci.com/jaysgrant/dadjoke-ui.svg?branch=master)](https://travis-ci.com/jaysgrant/dadjoke-ui)
+
 A simple Python 3 Flask based web UI for the [Dad Jokes microservice](https://github.com/yesinteractive/dad-jokes_microservice) project. The project is built around the idea of deployment hosted on Docker, and Kubernetes.
 
 ## Getting Started ##
