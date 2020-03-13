@@ -7,7 +7,6 @@ and returns it to the end user in a web viewable format.
 """
 
 import os
-import docstring
 import requests
 import json
 from flask import Flask, send_from_directory, render_template
