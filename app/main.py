@@ -11,19 +11,19 @@ import requests
 import json
 from flask import Flask, send_from_directory, render_template
 
-url = "http://dad-jokes.dadjokes.svc.cluster.local/"
+URL = "http://dad-jokes.dadjokes.svc.cluster.local/"
 
 
-def get_data(url):
+def get_data(URL):
     """
     This function queries the specified URL to retrieve the json out put.
     """
     try:
-        r = requests.get(url)
-        json_data = json.loads(r.text)
+        r_values = requests.get(URL)
+        json_data = json.loads(r_values.text)
         return json_data
-    except Exception as e:
-        print(e)
+    except Exception as e_output:
+        print(e_output)
 
 
 def joke_builder():
@@ -31,18 +31,18 @@ def joke_builder():
     This function builds the opener and punchline portions that will be displayed to the end user.
     """
     try:
-        json_data = get_data(url)
+        json_data = get_data(URL)
         joke = (json_data["Joke"])
         joke_opener = (joke["Opener"])
         joke_punchline = (joke["Punchline"])
         return joke_opener, joke_punchline
-    except Exception as e:
-        print(e)
+    except Exception as e_output:
+        print(e_output)
 
 
-app = Flask(__name__)
-@app.route("/")
-def joke():
+APP = Flask(__name__)
+@APP.route("/")
+def ui_builder():
     """
     This function renders the index.html page that is returned to the end user.
     """
@@ -50,16 +50,16 @@ def joke():
     return render_template('index.html', joke=joke_opener, punchline=joke_punchline)
 
 
-@app.route('/favicon.ico')
+@APP.route('/favicon.ico')
 def favicon():
     """
     This function renders the the favicon.ico file.
     """
-    return send_from_directory(os.path.join(app.root_path, 'static'),
+    return send_from_directory(os.path.join(APP.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 
-@app.route('/healthz', methods=['GET'])
+@APP.route('/healthz', methods=['GET'])
 def get_healthz():
     """
     This function renders the health check endpoint.
@@ -68,4 +68,4 @@ def get_healthz():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    APP.run(host='0.0.0.0', port=5000)
