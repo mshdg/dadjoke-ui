@@ -31,6 +31,7 @@ def joke_builder():
     This function builds the opener and punchline portions that will be displayed to the end user.
     """
     try:
+        global URL
         json_data = get_data(URL)
         joke = (json_data["Joke"])
         joke_opener = (joke["Opener"])
