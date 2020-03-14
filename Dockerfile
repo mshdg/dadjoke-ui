@@ -4,6 +4,7 @@ COPY requirements.txt .
 COPY ./app/main.py ./
 COPY static ./static
 COPY templates ./templates
+COPY config ./config
 
 ENV UWSGI_CHEAPER 50
 ENV UWSGI_PROCESSES 51
