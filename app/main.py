@@ -51,8 +51,6 @@ def joke_builder():
         return joke_opener, joke_punchline
     except ValueError:
         print('Decoding JSON has failed')
-    except requests.exceptions.Timeout:
-        print(["connection to ", URL, "timed out."])
     except requests.exceptions.TooManyRedirects:
         print(["Too many redirects."])
     except requests.exceptions.RequestException as requests_e:
