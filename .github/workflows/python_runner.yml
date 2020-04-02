@@ -35,6 +35,7 @@ jobs:
           flake8 ./app --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Test webserver response
         run: |
-          uwsgi --http :5000 --manage-script-name --mount /=./app/main:app --daemonize=main_app.log
+          cd app
+          uwsgi --http :5000 --manage-script-name --mount /=main:app --daemonize=main_app.log
           curl http://127.0.0.1:5000/healthz
           cat main_app.log
