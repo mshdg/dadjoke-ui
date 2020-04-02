@@ -1,2 +1,3 @@
 .vscode/settings.json
 app/__pycache__/main.cpython-38.pyc
+main_app.log
