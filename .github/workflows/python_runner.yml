@@ -37,3 +37,4 @@ jobs:
         run: |
           uwsgi --http :5000 --manage-script-name --mount /=main:app --daemonize=main_app.log
           curl http://127.0.0.1:5000/healthz
+          cat main_app.log
