@@ -7,7 +7,7 @@ metadata:
   labels:
     app: dad-jokes
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
   - name: http
     port: 80
