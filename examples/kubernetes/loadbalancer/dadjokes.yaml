@@ -58,7 +58,7 @@ spec:
         app: dad-jokes-ui
     spec:
       containers:
-      - image: nhjay/dadjoke-ui
+      - image: nhjay/dadjoke-ui/v0.3.7
         name: dad-jokes-ui
         resources:
           limits:
@@ -70,6 +70,8 @@ spec:
         ports:
         - containerPort: 5000
           name: http
+        - containerPort: 9191
+          name: stats
         livenessProbe:
           httpGet:
             path: /healthz
@@ -94,5 +96,8 @@ spec:
   - port: 5000
     name: http
     targetPort: 5000
+  - port: 9191
+    name: stats
+    targetPort: 9191
   selector:
     app: dad-jokes-ui
