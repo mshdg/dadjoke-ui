@@ -58,7 +58,7 @@ spec:
         app: dad-jokes-ui
     spec:
       containers:
-      - image: nhjay/dadjoke-ui/v0.3.7
+      - image: nhjay/dadjoke-ui:v0.3.7
         name: dad-jokes-ui
         resources:
           limits:
@@ -88,8 +88,6 @@ metadata:
   namespace: dadjokes
   labels:
     app: dad-jokes-ui
-  # annotations:
-  #   metallb.universe.tf/address-pool: microk8s_pool
 spec:
   type: LoadBalancer
   ports:
