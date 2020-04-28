@@ -87,7 +87,7 @@ metadata:
   labels:
     app: dad-jokes-ui
   annotations:
-    metallb.universe.tf/address-pool: #Replace this comment with the L2 pool name
+    metallb.universe.tf/address-pool: microk8s_pool
 spec:
   type: LoadBalancer
   ports:
