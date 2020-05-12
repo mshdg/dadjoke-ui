@@ -33,3 +33,17 @@ kubectl apply -f examples/kubernetes/dadjokes.yaml
 ### Docker ###
 
 * Todo: Docker instructions
+
+### Observability ###
+
+The Kubernetes/loadbalancer example has the UWSGI stats server enabled. The deployment will include a sidecar container for the [UWSGI Exporter](https://github.com/timonwong/uwsgi_exporter) to allow exporting metrics to Prometheus on the performance of UWSGI.
+
+The service created for the load balancer includes exposing the UWSGI stats over port 9117 via http. This configuration can be used to allow Prometheus to scrape metrics. A simple example of a Prometheus scrape job setup would be as follows:
+```yaml
+  - job_name: 'uwsgi'
+    static_configs:
+         - targets:
+           - '192.168.1.53:9117'
+```
+
+This is a very simple configuration, with a static job, that scrapes the metrics from the loadbalancer located at IP 192.168.1.53 via port 9117.
