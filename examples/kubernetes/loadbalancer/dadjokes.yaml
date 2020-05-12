@@ -58,7 +58,7 @@ spec:
         app: dad-jokes-ui
     spec:
       containers:
-      - image: nhjay/dadjoke-ui:v0.3.7
+      - image: nhjay/dadjoke-ui:v0.3.13
         name: dad-jokes-ui
         resources:
           limits:
