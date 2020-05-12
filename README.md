@@ -2,6 +2,9 @@
 
 ![Build Status](https://github.com/jaysgrant/dadjoke-ui/workflows/dadjoke_ui/badge.svg)
 ![GitHub release (https://github.com/jaysgrant/dadjoke-ui/releases)](https://img.shields.io/github/v/release/jaysgrant/dadjoke-ui?include_prereleases)
+![LGTM Grade](https://img.shields.io/lgtm/grade/python/github/jaysgrant/dadjoke-ui)
+![GitHub](https://img.shields.io/github/license/jaysgrant/dadjoke-ui)
+![Docker Pulls](https://img.shields.io/docker/pulls/nhjay/dadjoke-ui)
 
 A simple Python 3 Flask based web UI for the [Dad Jokes microservice](https://github.com/yesinteractive/dad-jokes_microservice) project. The project is built around the idea of deployment hosted on Docker, and Kubernetes.
 
