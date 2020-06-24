@@ -1,5 +1,5 @@
 ---
-name: dadjoke_ui
+name: Test
 on: [push, pull_request]
 
 jobs:
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.8.3]
 
     steps:
       - uses: actions/checkout@v2
