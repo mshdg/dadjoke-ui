@@ -1,16 +1,17 @@
-FROM python:3.7.4-alpine3.10
+FROM python:3.8.3-alpine3.10
 
 COPY requirements.txt .
-COPY ./app/main.py ./
+COPY ./app ./
 COPY static ./static
 COPY templates ./templates
 COPY config ./config
-
-ENV UWSGI_CHEAPER 50
-ENV UWSGI_PROCESSES 51
+COPY uwsgi.ini ./
 
 RUN apk add python3-dev build-base linux-headers pcre-dev
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-CMD ["uwsgi", "--http", ":5000", "--manage-script-name", "--mount", "/=main:app"]
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
+
+CMD ["uwsgi", "--ini", "uwsgi.ini"]
