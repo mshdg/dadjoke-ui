@@ -58,6 +58,9 @@ spec:
         app: dad-jokes-ui
     spec:
       containers:
+      - env:
+        - name: data_url
+          value: http://dadjokes.dadjokes
       - image: nhjay/dadjoke-ui
         name: dad-jokes-ui
         resources:

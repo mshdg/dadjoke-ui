@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+
+  dadjokes:
+    image: docker.io/yesinteractive/dadjokes
+    container_name: dadjokes
+    restart: unless-stopped
+    ports:
+      - "8100:8100"
+      - "8143:8143"
+
+  dadjokes-ui:
+    image: docker.io/nhjay/dadjoke-ui
+    container_name: dadjokes-ui
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - data_url=http://dadjokes:8100/
+    depends_on:
+      - dadjokes
