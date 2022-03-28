@@ -8,21 +8,7 @@ and returns it to the end user in a web viewable format.
 import os
 import json
 import requests
-from configparser import ConfigParser
 from flask import Flask, send_from_directory, render_template
-
-
-def get_settings():
-    """
-    This function reads the application config file, and returns the contents.
-    """
-    try:
-        config_path = os.path.join(os.path.dirname(__file__), 'config/config.ini')
-        config = ConfigParser()
-        config.read(config_path)
-        return config
-    except ValueError:
-        print('Unable to read config file.')
 
 
 def get_data():
@@ -30,8 +16,7 @@ def get_data():
     This function queries the specified URL to retrieve the json out put.
     """
     try:
-        config = get_settings()
-        data_url = config.get('main', 'url')
+        data_url = os.environ['data_url']
         r = requests.get(data_url)
         json_data = json.loads(r.text)
         return json_data

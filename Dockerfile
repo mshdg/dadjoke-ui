@@ -1,10 +1,11 @@
 FROM python:3.9.0a5-alpine3.10
 
+ENV data_url=''
+
 COPY requirements.txt .
 COPY ./app ./
 COPY static ./static
 COPY templates ./templates
-COPY config ./config
 COPY uwsgi.ini ./
 
 RUN apk add python3-dev build-base linux-headers pcre-dev
