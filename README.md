@@ -28,14 +28,11 @@ The Kubernetes example deployes two services, and two deployments.
 
 #### Installation on Kubernetes ####
 
-Installation can be performed by running the following command.
-```bash
-kubectl apply -f examples/kubernetes/dadjokes.yaml
-```
+See the Kubernetes [examples](./examples/kubernetes/) provided.
 
 ### Docker ###
 
-* Todo: Docker instructions
+See the docker-compose [example](./examples/docker-compose/) provided.
 
 ### Observability ###
 
