@@ -8,7 +8,7 @@ COPY static ./static
 COPY templates ./templates
 COPY uwsgi.ini ./
 
-RUN apk add python3-dev build-base linux-headers pcre-dev
+RUN apk add python3-dev build-base linux-headers pcre-dev curl
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
