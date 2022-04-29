@@ -16,7 +16,7 @@ def get_data():
     This function queries the specified URL to retrieve the json out put.
     """
     try:
-        data_url = os.environ['data_url']
+        data_url = os.environ['DATA_URL']
         r = requests.get(data_url)
         json_data = json.loads(r.text)
         return json_data

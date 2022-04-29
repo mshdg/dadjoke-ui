@@ -11,7 +11,7 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 80
+    targetPort: 8100
   selector:
     app: dad-jokes
 ---
@@ -59,8 +59,8 @@ spec:
     spec:
       containers:
       - env:
-        - name: data_url
-          value: http://dadjokes.dadjokes
+        - name: DATA_URL
+          value: http://dad-jokes
       - image: nhjay/dadjoke-ui
         name: dad-jokes-ui
         resources:
@@ -105,7 +105,7 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 5000
+  - port: 80
     name: http
     targetPort: 5000
   - port: 9117
