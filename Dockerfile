@@ -1,6 +1,6 @@
 FROM python:3.9.0a5-alpine3.10
 
-ENV data_url=''
+ENV DATA_URL=''
 
 COPY requirements.txt .
 COPY ./app ./
